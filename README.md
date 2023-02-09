@@ -1,23 +1,23 @@
 ```
 docker pull tooljet/tooljet-ce:latest
-docker tag tooljet/tooljet-ce:latest public.ecr.aws/i0o7r1j4/tooljet:latest
-aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/i0o7r1j4
-docker push public.ecr.aws/i0o7r1j4/tooljet:latest
+docker tag tooljet/tooljet-ce:latest public.ecr.aws/XXXX/tooljet:latest
+aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/XXXX
+docker push public.ecr.aws/XXXX/tooljet:latest
 ```
 
 Tried with : tooljet/tooljet-ce:v1.25.5 (20/09/2022)
-
+```
 docker pull tooljet/tooljet-ce:v1.23.2
-docker tag tooljet/tooljet-ce:v1.23.2 public.ecr.aws/i0o7r1j4/tooljet:v1.23.2
-docker push public.ecr.aws/i0o7r1j4/tooljet:v1.23.2
-
+docker tag tooljet/tooljet-ce:v1.23.2 public.ecr.aws/XXXX/tooljet:v1.23.2
+docker push public.ecr.aws/XXXX/tooljet:v1.23.2
+```
 
 # AWS App Runner CLI Commands
-
+```
 aws apprunner describe-service --service-arn arn:aws:apprunner:eu-west-1:XXXXXXX:service/test/XXXXXXX
 
 aws apprunner create-service --service-name ToolJet-PROD --cli-input-json file://AppRunner.json --debug
-
+```
 ----
 
 ToolJet is an **open-source low-code framework** to build and deploy internal tools quickly with minimal engineering effort. ToolJet's drag and drop frontend builder allows you to build complicated responsive frontends within minutes. You can also connect to your data sources, such as databases ( PostgreSQL, MongoDB, Elasticsearch & more), API endpoints (ToolJet supports importing OpenAPI spec & OAuth2 authorization), SaaS tools (Stripe, Slack, Google Sheets, Airtable, Notion & more) and object storage services ( S3, GCS, Minio, etc ) to fetch and write data.

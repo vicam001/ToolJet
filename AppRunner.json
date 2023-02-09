@@ -1,0 +1,59 @@
+{
+    "SourceConfiguration": {
+        "ImageRepository": {
+            "ImageIdentifier": "public.ecr.aws/i0o7r1j4/tooljet:latest",
+            "ImageConfiguration": {
+                "Port": "3000",
+                "StartCommand": "npm run start:prod --prefix server",
+                "RuntimeEnvironmentVariables": {
+                    "PG_DB_OWNER": "false",
+                    "NODE_ENV": "production",
+                    "DEPLOYMENT_PLATFORM": "AWS AppRunner"
+                },
+                "RuntimeEnvironmentSecrets": {
+                    "CHECK_FOR_UPDATES": "/tooljet/prod/CHECK_FOR_UPDATES",
+                    "COMMENT_FEATURE_ENABLE": "/tooljet/prod/COMMENT_FEATURE_ENABLE",
+                    "DEFAULT_FROM_EMAIL": "/tooljet/prod/DEFAULT_FROM_EMAIL",
+                    "LOCKBOX_MASTER_KEY": "/tooljet/prod/LOCKBOX_MASTER_KEY",
+                    "PG_DB": "/tooljet/prod/PG_DB",
+                    "PG_HOST": "arn:aws:secretsmanager:eu-west-1:039370001367:secret:db-postgres-main-Cc3HHo:host::",
+                    "PG_PASS": "arn:aws:secretsmanager:eu-west-1:039370001367:secret:db-postgres-main-Cc3HHo:password::",
+                    "PG_PORT": "arn:aws:secretsmanager:eu-west-1:039370001367:secret:db-postgres-main-Cc3HHo:port::",
+                    "PG_USER": "arn:aws:secretsmanager:eu-west-1:039370001367:secret:db-postgres-main-Cc3HHo:username::",
+                    "SECRET_KEY_BASE": "/tooljet/prod/SECRET_KEY_BASE",
+                    "SMTP_DOMAIN": "/tooljet/prod/SMTP_DOMAIN",
+                    "SMTP_PASSWORD": "/tooljet/prod/SMTP_PASSWORD",
+                    "SMTP_PORT": "/tooljet/prod/SMTP_PORT",
+                    "SMTP_USERNAME": "/tooljet/prod/SMTP_USERNAME",
+                    "TOOLJET_HOST": "/tooljet/prod/TOOLJET_HOST"
+                }
+            },
+            "ImageRepositoryType": "ECR_PUBLIC"
+        },
+        "AutoDeploymentsEnabled": false
+    },
+    "InstanceConfiguration": {
+        "Cpu": "1024",
+        "Memory": "3072",
+        "InstanceRoleArn": "arn:aws:iam::039370001367:role/AWSAppRunnerToolJet"
+    },
+    "HealthCheckConfiguration": {
+        "Protocol": "TCP",
+        "Path": "/",
+        "Interval": 20,
+        "Timeout": 19,
+        "HealthyThreshold": 1,
+        "UnhealthyThreshold": 20
+    },
+    "NetworkConfiguration": {
+        "EgressConfiguration": {
+            "EgressType": "DEFAULT"
+        },
+        "IngressConfiguration": {
+            "IsPubliclyAccessible": true
+        }
+    },
+    "ObservabilityConfiguration": {
+        "ObservabilityEnabled": false
+    }
+}
